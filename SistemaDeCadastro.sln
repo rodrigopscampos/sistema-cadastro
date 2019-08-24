@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaDeCadastro", "SistemaDeCadastro\SistemaDeCadastro.csproj", "{0A591E50-6091-4F4F-A51C-2530EA9FBFFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaDeCadastro.WinFormsApp", "SistemaDeCadastro.WinFormsApp\SistemaDeCadastro.WinFormsApp.csproj", "{75C7A463-1291-4C18-BB62-E78ECE1D4115}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0A591E50-6091-4F4F-A51C-2530EA9FBFFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A591E50-6091-4F4F-A51C-2530EA9FBFFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A591E50-6091-4F4F-A51C-2530EA9FBFFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75C7A463-1291-4C18-BB62-E78ECE1D4115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C7A463-1291-4C18-BB62-E78ECE1D4115}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C7A463-1291-4C18-BB62-E78ECE1D4115}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C7A463-1291-4C18-BB62-E78ECE1D4115}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

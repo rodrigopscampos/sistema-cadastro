@@ -68,13 +68,14 @@ namespace SistemaDeCadastro
         public static bool Excluir(int usuario)
         {
             var todos = ListarTodos().ToList();
-            var item = Consultar(usuario);
-            var sucesso = todos.Remove(item);
+            var item = todos.FirstOrDefault(i => i.Id == usuario);
 
-            if (!sucesso)
+            if (item == null)
             {
                 return false;
             }
+
+            todos.Remove(item);
 
             using (var sw = new StreamWriter(DatabaseNome, append: false))
             {
