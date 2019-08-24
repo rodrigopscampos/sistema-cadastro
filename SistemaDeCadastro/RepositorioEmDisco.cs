@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace SistemaDeCadastro
 {
@@ -88,18 +89,12 @@ namespace SistemaDeCadastro
 
         private static string Serializar(Cliente c)
         {
-            return $"{c.Id};{c.Nome};{c.DtNascimento}";
+            return JsonConvert.SerializeObject(c);
         }
 
         private static Cliente Desserializar(string texto)
         {
-            var campos = texto.Split(';');
-
-            var id = int.Parse(campos[0]);
-            var nome = campos[1];
-            var dtNascimento = DateTime.Parse(campos[2]);
-
-            return new Cliente(id, nome, dtNascimento);
+            return JsonConvert.DeserializeObject<Cliente>(texto);
         }
     }
 }
