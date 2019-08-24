@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SistemaDeCadastro
 {
-    public static class Repositorio
+    public static class RepositorioEmMemoria
     {
         private static int _chave = 0;
         private static Dictionary<int, Cliente> _clientes = new Dictionary<int, Cliente>();
 
-        static Repositorio()
+        static RepositorioEmMemoria()
         {
             Cadastrar("Rodrigo Campos", new DateTime(2010, 08, 10));
             Cadastrar("João da Silva", new DateTime(2010, 08, 10));

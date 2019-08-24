@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,7 +76,7 @@ namespace SistemaDeCadastro
         static void ListarTodos()
         {
             Console.Clear();
-            var clientes = Repositorio.ListarTodos();
+            var clientes = RepositorioEmDisco.ListarTodos();
 
             if (clientes.Any())
             {
@@ -118,7 +119,7 @@ namespace SistemaDeCadastro
             }
 
             Console.Clear();
-            Repositorio.Cadastrar(nome, dtNascimento);
+            RepositorioEmDisco.Cadastrar(nome, dtNascimento);
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("\nUsuário cadastrado com sucesso!");
@@ -128,7 +129,7 @@ namespace SistemaDeCadastro
         {
             Console.Write("Informe o código do usuário:");
             var codigoUsuario = int.Parse(Console.ReadLine());
-            var cliente = Repositorio.Consultar(codigoUsuario);
+            var cliente = RepositorioEmDisco.Consultar(codigoUsuario);
 
             if (cliente != null)
             {
@@ -145,7 +146,7 @@ namespace SistemaDeCadastro
         {
             Console.Write("Informe o código do usuário:");
             var codigoUsuario = int.Parse(Console.ReadLine());
-            if (Repositorio.Excluir(codigoUsuario))
+            if (RepositorioEmDisco.Excluir(codigoUsuario))
             {
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.WriteLine("\nCliente removido com sucesso!");
