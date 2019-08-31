@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaDeCadastro.WinFormsApp.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,7 +24,7 @@ namespace SistemaDeCadastro.WinFormsApp
         {
             var formNovoCadastro = new FormNovoCadastro();
             formNovoCadastro.ShowDialog(this);
-            grdClientes.DataSource = RepositorioEmDisco.ListarTodos();
+            grdClientes.DataSource = ApiClient.ListarTodos();
         }
 
 
@@ -34,12 +35,12 @@ namespace SistemaDeCadastro.WinFormsApp
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            grdClientes.DataSource = RepositorioEmDisco.ListarTodos();
+            grdClientes.DataSource = ApiClient.ListarTodos();
         }
 
         private void btnListarClientes_Click(object sender, EventArgs e)
         {
-            grdClientes.DataSource = RepositorioEmDisco.ListarTodos();
+            grdClientes.DataSource = ApiClient.ListarTodos();
         }
 
         private void grdClientes_CellMouseClick(
@@ -49,23 +50,23 @@ namespace SistemaDeCadastro.WinFormsApp
             if (e.Button != MouseButtons.Right)
                 return;
 
-            var cliente = (Cliente)grdClientes.Rows[e.RowIndex].DataBoundItem;
+            var cliente = (InputCliente)grdClientes.Rows[e.RowIndex].DataBoundItem;
 
 
             var menuExcluir = new MenuItem("Excluir");
             menuExcluir.Click += (_, __) =>
             {
-                RepositorioEmDisco.Excluir(cliente.Id);
-                grdClientes.DataSource = RepositorioEmDisco.ListarTodos();
+                ApiClient.Excluir(cliente.id);
+                grdClientes.DataSource = ApiClient.ListarTodos();
             };
 
             var menuEditar = new MenuItem("Editar");
             menuEditar.Click += (_, __) =>
             {
-                RepositorioEmDisco.Excluir(cliente.Id);
+                ApiClient.Excluir(cliente.id);
                 var form = new FormNovoCadastro(cliente);
                 form.ShowDialog();
-                grdClientes.DataSource = RepositorioEmDisco.ListarTodos();
+                grdClientes.DataSource = ApiClient.ListarTodos();
             };
 
             var menu = new ContextMenu();
@@ -77,13 +78,13 @@ namespace SistemaDeCadastro.WinFormsApp
 
         private void btnExportarCsv_Click(object sender, EventArgs e)
         {
-            var dados = (IEnumerable<Cliente>)grdClientes.DataSource;
+            var dados = (IEnumerable<InputCliente>)grdClientes.DataSource;
             var csvLinhas = new List<string>();
 
             csvLinhas.Add("ID;Nome;Dt. Nascimento");
-            foreach (Cliente item in dados)
+            foreach (InputCliente item in dados)
             {
-                csvLinhas.Add($"{item.Id};{item.Nome};{item.DtNascimento}");
+                csvLinhas.Add($"{item.id};{item.nome};{item.dt_nascimento}");
             }
 
             var dialog = new SaveFileDialog();

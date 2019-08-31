@@ -17,7 +17,7 @@ namespace SistemaDeCadatro.API.Controllers
         [Route("")]
         public void Post([FromBody] InputCadastro input)
         {
-            RepositorioEmDisco.Cadastrar(input.Nome, input.Dt_Nascimento);
+            RepositorioEmDisco.Cadastrar(input.nome, input.dt_nascimento);
         }
 
         [HttpGet]

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaDeCadastro.WinFormsApp.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,11 +18,11 @@ namespace SistemaDeCadastro.WinFormsApp
             InitializeComponent();
         }
 
-        public FormNovoCadastro(Cliente c)
+        public FormNovoCadastro(InputCliente c)
             : this()
         {
-            txtNome.Text = c.Nome;
-            dtpDtNascimento.Value = c.DtNascimento;
+            txtNome.Text = c.nome;
+            dtpDtNascimento.Value = c.dt_nascimento;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -39,7 +40,7 @@ namespace SistemaDeCadastro.WinFormsApp
             string nome = txtNome.Text;
             DateTime dtNascimento = dtpDtNascimento.Value;
 
-            RepositorioEmDisco.Cadastrar(nome, dtNascimento);
+            ApiClient.Cadastrar(nome, dtNascimento);
 
             MessageBox.Show(
                 "Cadatrado com sucesso",
